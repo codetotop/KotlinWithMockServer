@@ -1,0 +1,74 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.gabriel.kotlin"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "mId"
+    productFlavors {
+        dev {
+            dimension "mId"
+            applicationId "com.gabriel.kotlin"
+            buildConfigField('String', 'BASE_URL', '"https://d7b7cd59-2260-48fc-85d0-316ba66e41aa.mock.pstmn.io/"')
+            buildConfigField('String', 'API_VERSION', "1")
+        }
+
+        mock_server {
+            dimension "mId"
+            applicationId "com.gabriel.kotlin"
+            buildConfigField('String', 'BASE_URL', '"https://d7b7cd59-2260-48fc-85d0-316ba66e41aa.mock.pstmn.io/"')
+            buildConfigField('String', 'API_VERSION', "1")
+        }
+    }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.3.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.6'
+    implementation 'org.mapstruct:mapstruct:1.2.0.Final'
+    // OR use this with Java 8 and beyond: org.mapstruct:mapstruct-jdk8:...
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.2.0.Final'
+    testAnnotationProcessor 'org.mapstruct:mapstruct-processor:1.2.0.Final'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+
+    implementation 'com.android.support:multidex:1.0.3'
+
+
+}
