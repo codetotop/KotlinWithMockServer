@@ -5,10 +5,10 @@ import com.google.gson.annotations.Expose
 
 class CustomerDTO(
     @Expose
-    @SerializedName("mId")
+    @SerializedName("id")
     var mId: Int,
     @Expose
-    @SerializedName("mName")
+    @SerializedName("name")
     val mName: String,
     @Expose
     @SerializedName("age")
@@ -16,4 +16,5 @@ class CustomerDTO(
     @Expose
     @SerializedName("company")
     val mCompany: String
+
 )

@@ -11,7 +11,7 @@ import java.util.List;
 
 public class MockServerRepository {
 
-    public static Single<CustomerDetail> fetchCustomDetail(Integer id) {
+    /*public static Single<CustomerDetail> fetchCustomDetail(Integer id) {
 
         return WebServiceBuilder.getInstance().getMockServerService()
                 .fetchCustomerDetail(id)
@@ -20,13 +20,13 @@ public class MockServerRepository {
                     CustomerDetail detail = CustomerDetailMapper.INSTANCE.fromDTO(response.getMData());
                     return Single.just(detail);
                 });
-    }
+    }*/
 
     public static Single<List<Customer>> fetchCustomerList() {
         return WebServiceBuilder.getInstance().getMockServerService()
                 .fetchCustomers()
                 .flatMap(response -> {
-                    List<Customer> customer = CustomerMapper.INSTANCE.fromDTOs(response.getMData());
+                    List<Customer> customer = CustomerMapper.fromDTOs(response.getMData());
                     return Single.just(customer);
                 });
     }

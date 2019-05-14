@@ -1,7 +1,8 @@
 package com.gabriel.kotlin.data.model
 
 data class Customer(
-    val mId: Int,
+    var mId: Int,
     val mName: String,
-    val mEmail: String
+    val mAge: String,
+    val mCompany: String
 )
